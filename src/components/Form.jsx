@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const Form = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState("");
+ 
   const [error, setError] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
