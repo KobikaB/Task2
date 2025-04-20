@@ -1,20 +1,39 @@
 import React, { useState } from "react";
 
 const Form = ({Name}) => {
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
+  
  
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState("");
   const [submitted, setSubmitted] = useState(false);
-
+  const [formData,setFormData] = useState({
+    name:"",
+    password:""
+  });
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (password.length !== 8) {
+    setLoading(true);
+    setError("");
+    setSubmitted(false);
+   
+   try{
+    if(formData.name.trim() === "" || formData.password.length !== 8) {
+      if(formData.name.trim() === ""){
+        setError("Name is require"); 
+      }else if(formData.password.length !== 8){
       setError("password must be exactly 8 charactors");
-    } else {
-      setError("");
-      setSubmitted(true);
+    }
+
+   } else{
+    setSubmitted(true);
+   }
+   
+  }catch (err) {
+      setError("please try again");
+    } 
+    finally {
+      
+      setLoading(false);
     }
   };
 
@@ -25,7 +44,7 @@ const Form = ({Name}) => {
     >
       <div className="  translate-y-40 h-120 translate-x-90 bg-amber-200 bg-cover rounded-2xl p-7 w-xl justify-center m-3  ">
         <h1 className="text-2xl text-black text-center font-bold">Login</h1>
-        <form className="space-y-4 h-60">
+        <form onSubmit={handleSubmit} className="space-y-4 h-60">
           <img
             src="/image/8792047.png"
             alt="Logo"
@@ -37,8 +56,8 @@ const Form = ({Name}) => {
               type="text"
               placeholder="Enter your name"
               className="bg-white w-md rounded-2xl h-12 flex "
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name:e.target.value })}
             />
           </div>
 
@@ -48,8 +67,8 @@ const Form = ({Name}) => {
               type="password"
               placeholder="Enter your password"
               className="bg-white w-md rounded-xl h-12"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={formData.password}
+              onChange={(e) => setFormData({ ...formData,password:e.target.value })}
             />
           </div>
 
@@ -57,7 +76,7 @@ const Form = ({Name}) => {
 
           {submitted && (
             <p className="text-green-700 text-center">
-              Form submitted successfully...
+              submitted successfully...
             </p>
           )}
 
@@ -70,6 +89,7 @@ const Form = ({Name}) => {
               type="submit"
             >
               {Name}
+           
             </button>
           </div>
         </form>
