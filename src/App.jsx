@@ -3,11 +3,13 @@ import Form from "./components/form";
 import { useState } from "react";
 
 function App() {
-  const [isSubmitted, setIssubmitted] = useState(true);
+ 
 
   return (
     <div>
-      <Form />
+      <Form Name="submit" />
+
+      
     </div>
   );
 }

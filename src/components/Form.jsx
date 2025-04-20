@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Form = () => {
+const Form = ({Name}) => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState("");
@@ -65,11 +65,11 @@ const Form = () => {
 
           <div className="flex justify-center">
             <button
-              onClick={handleSubmit}
+              
               className=" pr-5 my-6 justify-center bg-amber-700 p-2  rounded-xl hover:bg-blue-400 text-cyan-900 al"
               type="submit"
             >
-              Submit
+              {Name}
             </button>
           </div>
         </form>
