@@ -4,7 +4,7 @@ const Form = ({Name}) => {
   
  
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState("");
+  
   const [submitted, setSubmitted] = useState(false);
   const [formData,setFormData] = useState({
     name:"",
@@ -12,15 +12,15 @@ const Form = ({Name}) => {
   });
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
+    
     setError("");
     setSubmitted(false);
    
    try{
-    if(formData.name.trim() === "" || formData.password.length !== 8) {
-      if(formData.name.trim() === ""){
+    if(formData.name.trim() == "" || formData.password.length != 8) {
+      if(formData.name.trim() == ""){
         setError("Name is require"); 
-      }else if(formData.password.length !== 8){
+      }else if(formData.password.length != 8){
       setError("password must be exactly 8 charactors");
     }
 
@@ -33,7 +33,7 @@ const Form = ({Name}) => {
     } 
     finally {
       
-      setLoading(false);
+      
     }
   };
 
