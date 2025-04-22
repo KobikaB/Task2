@@ -43,8 +43,8 @@ const Form = ({ Name }) => {
       className="w-screen h-screen bg-cover bg-center"
       style={{ backgroundImage: "url('/image/image4.jpeg')" }}
     >
-      <div className="flex justify-center ">
-        <div className="bg-amber-200 rounded-3xl w-xl h-auto mt-40 flex flex-col items-center">
+      <div className="flex justify-center items-center min-h-screen ">
+        <div className="bg-amber-200 rounded-3xl w-xl h-auto  flex flex-col items-center">
           <h1 className="text-2xl text-center font-bold mt-5">Login</h1>
           <form onSubmit={handleSubmit}>
             <img
