@@ -9,8 +9,7 @@ function App() {
   return (
     <div>
       <Form Name="submit" />
-    <ToastContainer 
-    />
+    <ToastContainer />
       
     </div>
   );
