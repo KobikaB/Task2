@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 
 const Form = ({ Name }) => {
@@ -27,27 +28,29 @@ const Form = ({ Name }) => {
 
     if (formData.password.length < 8) {
       setPasswordError("Password must be minimum 8 characters");
+      toast.
       isValid = false;
     }
 
     if (isValid) {
       setSubmitted(true);
+      toast.success("submit sucessfully")
     }
   };
 
   return (
     <div
-      className="w-screen h-screen bg-cover bg-center border-4"
+      className="w-screen h-screen bg-cover bg-center"
       style={{ backgroundImage: "url('/image/image4.jpeg')" }}
     >
-      <div className="flex justify-center">
-        <div className="bg-amber-200 rounded-3xl w-xl h-auto mt-40">
-          <h1 className="text-2xl text-black text-center font-bold">Login</h1>
+      <div className="flex justify-center ">
+        <div className="bg-amber-200 rounded-3xl w-xl h-auto mt-40 flex flex-col items-center">
+          <h1 className="text-2xl text-center font-bold mt-5">Login</h1>
           <form onSubmit={handleSubmit}>
             <img
               src="/image/8792047.png"
               alt="Logo"
-              className="w-15 h-15 mx-auto"
+              className="w-15 h-15 mx-auto mt-5"
             />
 
             <div className="p-3 ml-3 flex flex-col">
@@ -55,7 +58,7 @@ const Form = ({ Name }) => {
               <input
                 type="text"
                 placeholder="Enter your name"
-                className="bg-white w-md rounded-2xl h-12 pl-4"
+                className="bg-white w-md  h-12 pl-4"
                 value={formData.name}
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
@@ -71,7 +74,7 @@ const Form = ({ Name }) => {
               <input
                 type="password"
                 placeholder="Enter your password"
-                className="bg-white w-md rounded-xl h-12 pl-4"
+                className="bg-white w-md  h-12 pl-4"
                 value={formData.password}
                 onChange={(e) =>
                   setFormData({ ...formData, password: e.target.value })
@@ -82,11 +85,7 @@ const Form = ({ Name }) => {
               )}
             </div>
 
-            {submitted && (
-              <p className="text-green-700 text-center">
-                Submitted successfully...
-              </p>
-            )}
+            
 
             <div className="flex justify-center">
               <button
